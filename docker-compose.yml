@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  pufferpanel:
+    image: pufferpanel/pufferpanel:latest
+    container_name: pufferpanel
+    ports:
+      - "8080:8080"
+      - "5657:5657"
+    volumes:
+      - pufferpanel-config:/etc/pufferpanel
+      - /var/lib/pufferpanel:/var/lib/pufferpanel
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: on-failure
+
+volumes:
+  pufferpanel-config:
